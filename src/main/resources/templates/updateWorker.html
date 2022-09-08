@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <title>修改客户</title>
+    <style>
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=password], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            width: 50%;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div>
+    <center><h1>修改员工资料</h1></center>
+    <form action="/handleUpdateWorker" method="post">
+
+        <input type="text" name="id" th:value="${worker.id}" hidden>
+
+        <label for="workerName">员工名称</label>
+        <input type="text" id="workerName" th:value="${worker.workerName}" name="workerName" placeholder="请输入员工名称">
+
+        <label for="salary">底薪</label>
+        <input type="text" id="salary" th:value="${worker.salary}" name="salary" placeholder="请输入员工底薪">
+
+        <label for="royalty">水票</label>
+        <input type="text" id="royalty" th:value="${worker.royalty}" name="royalty" placeholder="请输入员工提成">
+
+        <input type="submit" value="确认添加">
+    </form>
+</div>
+
+</body>
+
+
+
+</html>

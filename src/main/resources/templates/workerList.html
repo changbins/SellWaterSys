@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <title>客户管理</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2}
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        form{
+            display: inline-block;
+        }
+    </style>
+</head>
+
+
+<body>
+
+<h2>员工管理</h2>
+<form method="get" action="/queryWorker">
+    <input class="search" type="text" name="workerName" placeholder="请输入员工名称">
+    <input type="submit" value="查询">
+</form>
+<span>
+    <a th:href="@{/toAddWorker}">添加员工</a>
+</span>
+<table>
+
+    <tr>
+        <th>员工编号</th>
+        <th>员工名称</th>
+        <th>工人薪水</th>
+        <th>每桶提成</th>
+        <th>操作</th>
+    </tr>
+
+    <tr th:each="r:${list}">
+        <td th:text="${r.id}"></td>
+        <td th:text="${r.workerName}"></td>
+        <td th:text="${r.salary}"></td>
+        <td th:text="${r.royalty}"></td>
+        <td>
+            <a th:href="@{/toUpdateWorker/}+${r.id}">修改</a>
+            <a href="javascript:void(0)" th:href="@{/deleteWorker/}+${r.id}">删除</a>
+        </td>
+    </tr>
+
+</table>
+<hr>
+<span>
+    <a th:href="@{/returnToHome}">返回主页</a>
+</span>
+
+
+
+
+
+</body>
+
+
+
+</html>
